@@ -1,26 +1,26 @@
 namespace Communication
 {
-    public class SantaCommunicator(int numberOfDaysToRest)
+    public class SantaCommunicator(int numberOfDaysToRest, int numberOfDaysBeforeChristmas)
     {
-        public string ComposeMessage(Reindeer reindeer, int numberOfDaysBeforeChristmas)
+        public string ComposeMessage(ReindeerTravelInfo reindeerTravelInfo)
         {
-            var daysBeforeReturn = DaysBeforeReturn(reindeer.NumbersOfDaysForComingBack, numberOfDaysBeforeChristmas);
+            var daysBeforeReturn = DaysBeforeReturn(reindeerTravelInfo.NumbersOfDaysForComingBack);
             return
-                $"Dear {reindeer.ReindeerName}, please return from {reindeer.CurrentLocation} in {daysBeforeReturn} day(s) to be ready and rest before Christmas.";
+                $"Dear {reindeerTravelInfo.ReindeerName}, please return from {reindeerTravelInfo.CurrentLocation} in {daysBeforeReturn} day(s) to be ready and rest before Christmas.";
         }
 
-        public bool IsOverdue(Reindeer reindeer, int numberOfDaysBeforeChristmas, ILogger logger)
+        public bool IsOverdue(ReindeerTravelInfo reindeerTravelInfo, ILogger logger)
         {
-            if (DaysBeforeReturn(reindeer.NumbersOfDaysForComingBack, numberOfDaysBeforeChristmas) <= 0)
+            if (DaysBeforeReturn(reindeerTravelInfo.NumbersOfDaysForComingBack) <= 0)
             {
-                logger.Log($"Overdue for {reindeer.ReindeerName} located {reindeer.CurrentLocation}.");
+                logger.Log($"Overdue for {reindeerTravelInfo.ReindeerName} located {reindeerTravelInfo.CurrentLocation}.");
                 return true;
             }
 
             return false;
         }
 
-        private int DaysBeforeReturn(int numbersOfDaysForComingBack, int numberOfDaysBeforeChristmas) =>
+        private int DaysBeforeReturn(int numbersOfDaysForComingBack) =>
             numberOfDaysBeforeChristmas - numbersOfDaysForComingBack - numberOfDaysToRest;
     }
 }
