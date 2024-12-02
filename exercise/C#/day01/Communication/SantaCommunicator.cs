@@ -1,6 +1,6 @@
 namespace Communication
 {
-    public class SantaCommunicator(int numberOfDaysToRest, int numberOfDaysBeforeChristmas)
+    public class SantaCommunicator(ChristmasRestPlan christmasRestPlan)
     {
         public string ComposeMessage(ReindeerTravelInfo reindeerTravelInfo)
         {
@@ -21,6 +21,6 @@ namespace Communication
         }
 
         private int DaysBeforeReturn(int numbersOfDaysForComingBack) =>
-            numberOfDaysBeforeChristmas - numbersOfDaysForComingBack - numberOfDaysToRest;
+            christmasRestPlan.NumberOfDaysBeforeChristmas - numbersOfDaysForComingBack - christmasRestPlan.NumberOfDaysToRest;
     }
 }
