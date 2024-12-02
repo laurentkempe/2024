@@ -8,7 +8,7 @@ namespace Games.Tests
 {
     public class FizzBuzzTests
     {
-        private static readonly string[] FizzBuzzStrings = ["Fizz", "Buzz", "FizzBuzz"];
+        private static readonly string[] FizzBuzzStrings = ["Fizz", "Buzz", "FizzBuzz", "Whizz"];
 
         [Theory]
         [InlineData(1, "1")]
@@ -20,6 +20,8 @@ namespace Games.Tests
         [InlineData(5, "Buzz")]
         [InlineData(50, "Buzz")]
         [InlineData(85, "Buzz")]
+        [InlineData(7, "Whizz")]
+        [InlineData(14, "Whizz")]
         [InlineData(15, "FizzBuzz")]
         [InlineData(30, "FizzBuzz")]
         [InlineData(45, "FizzBuzz")]

@@ -18,12 +18,14 @@ public static class FizzBuzz
     {
         var isFizz = Is(3, input);
         var isBuzz = Is(5, input);
+        var isWhizz = Is(7, input);
 
-        return (isFizz, isBuzz) switch
+        return (isFizz, isBuzz, isWhizz) switch
         {
-            (true, true) => "FizzBuzz",
-            (true, false) => "Fizz",
-            (false, true) => "Buzz",
+            (true, true, false) => "FizzBuzz",
+            (true, false, false) => "Fizz",
+            (false, true, false) => "Buzz",
+            (false, false, true) => "Whizz",
             _ => input.ToString()
         };
     }
