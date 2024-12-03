@@ -19,13 +19,17 @@ public static class FizzBuzz
         var isFizz = Is(3, input);
         var isBuzz = Is(5, input);
         var isWhizz = Is(7, input);
+        var isBang = Is(11, input);
 
-        return (isFizz, isBuzz, isWhizz) switch
+        return (isFizz, isBuzz, isWhizz, isBang) switch
         {
-            (true, true, false) => "FizzBuzz",
-            (true, false, false) => "Fizz",
-            (false, true, false) => "Buzz",
-            (false, false, true) => "Whizz",
+            (true, true, false, false) => "FizzBuzz",
+            (true, false, true, false) => "FizzWhizz",
+            (true, false, false, true) => "FizzBang",
+            (true, false, false, false) => "Fizz",
+            (false, true, false, false) => "Buzz",
+            (false, false, true, false) => "Whizz",
+            (false, false, false, true) => "Bang",
             _ => input.ToString()
         };
     }

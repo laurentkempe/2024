@@ -8,23 +8,24 @@ namespace Games.Tests
 {
     public class FizzBuzzTests
     {
-        private static readonly string[] FizzBuzzStrings = ["Fizz", "Buzz", "FizzBuzz", "Whizz"];
+        private static readonly string[] FizzBuzzStrings = ["Fizz", "Buzz", "FizzBuzz", "Whizz", "Bang", "FizzWhizz", "FizzBang"];
 
         [Theory]
         [InlineData(1, "1")]
         [InlineData(67, "67")]
         [InlineData(82, "82")]
         [InlineData(3, "Fizz")]
-        [InlineData(66, "Fizz")]
-        [InlineData(99, "Fizz")]
         [InlineData(5, "Buzz")]
         [InlineData(50, "Buzz")]
         [InlineData(85, "Buzz")]
         [InlineData(7, "Whizz")]
         [InlineData(14, "Whizz")]
+        [InlineData(11, "Bang")]
         [InlineData(15, "FizzBuzz")]
         [InlineData(30, "FizzBuzz")]
         [InlineData(45, "FizzBuzz")]
+        [InlineData(66, "FizzBang")]
+        [InlineData(99, "FizzBang")]
         public void Returns_Number_Representation(int input, string expectedResult)
             => Games.FizzBuzz.Convert(input)
                 .Should()
